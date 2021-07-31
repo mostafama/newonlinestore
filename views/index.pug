@@ -1,0 +1,14 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+
+  ul
+    each prod in products 
+      li
+        h4= prod.name
+        p= prod.description
+        p= prod.price
+        p= prod.image
+
