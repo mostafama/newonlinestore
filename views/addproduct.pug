@@ -7,10 +7,10 @@ block content
   form.row.g-3(method='POST' action="")
     .col-md-6
       label.form-label(for='inputname') Name
-      input#inputname.form-control(type='text' name='name')
+      input#inputname.form-control(type='text' name='name' required)
     .col-md-6
       label.form-label(for='inputprice') Price
-      input#inputprice.form-control(type='number' placeholder='0.0' step="any" name='price')
+      input#inputprice.form-control(type='number' placeholder='0.0' step="any" name='price' required)
     .col-12
       label.form-label(for='inputdescription') Description
       textarea#inputdescription.form-control(rows="3" name='description')

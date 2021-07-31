@@ -4,11 +4,17 @@ block content
   h1= title
   p Welcome to #{title}
 
-  ul
-    each prod in products 
-      li
-        h4= prod.name
-        p= prod.description
-        p #{prod.price} CAD
-        img(src=prod.image width='200')
+  
+  .container
+    h2.bg-info Our Products
+      .row
+        each prod in products
+          .card.col-lg-3.col-md-4.col-sm-12
+            img.card-img-top(src=prod.image height="200")
+            .card-body
+              h5.card-title= prod.name
+              h6.card-text
+                | description: #{prod.description}
+                | Price: #{prod.price}
+      a.btn.btn-primary.col-12(href='/product/add') ADD
 
