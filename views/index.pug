@@ -9,6 +9,6 @@ block content
       li
         h4= prod.name
         p= prod.description
-        p= prod.price
-        p= prod.image
+        p #{prod.price} CAD
+        img(src=prod.image width='200')
 

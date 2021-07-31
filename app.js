@@ -6,6 +6,7 @@ var logger = require("morgan");
 
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
+var productsRouter = require("./routes/products");
 
 var app = express();
 
@@ -22,16 +23,16 @@ db.on("error", console.error.bind(console, "DB connection error:"));
 db.once("open", function () {
   console.log("We're connected!");
 });
-
-const Product = require("./models/product");
-prod = new Product({
-  name: "Speed Reading: Learn to Read a 200+ Page Book in 1 Hour",
-  description:
-    "This has become the go to book for students, teachers, educators, professionals, and home-school parents & children to rapidly improve their reading. \
-  It offers simple tips to not only accelerate reading, but comprehension and memory.",
-  price: 9.99,
-  image: "/images/book1.jpg",
-});
+// Used to create seed data
+// const { Product } = require("./models/product");
+// prod = new Product({
+//   name: "The LEGO Ideas Book: Unlock Your Imagination",
+//   description:
+//     "Be inspired to create and build amazing models with your LEGO® bricks!",
+//   price: 25.94,
+//   image: "/images/book4.jpg",
+// });
+// prod.save();
 // ---------------------------------------------
 app.use(logger("dev"));
 app.use(express.json());
@@ -41,6 +42,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
+app.use("/product", productsRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
