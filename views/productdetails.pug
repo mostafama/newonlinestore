@@ -15,9 +15,18 @@ block content
             h5.card-title= prod.name
             h6.card-text
               | description: #{prod.description}
+            h6.card-text
               | Price: #{prod.price}
+          p.card-text
+            form(action='/product/buy' method='post')
+              .row
+                .col-sm-6
+                  input.mx-3(name='quantity' type='number' min=1 value=1)
+                  input(type='hidden' name="productId" value= prod && prod._id)
+                .col-sm-6
+                  button.btn.btn-success.col-12(type='submit') Buy
           p.card-text
             a.btn.btn-primary.col-12(href='/product/edit/'+ prod._id) Edit
           p.card-text
-            a.btn.btn-primary.col-12(href='/product/delete/'+ prod._id) Delete
+            a.btn.btn-danger.col-12(href='/product/delete/'+ prod._id) Delete
 
