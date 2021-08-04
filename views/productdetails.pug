@@ -1,0 +1,23 @@
+extends layout
+
+block content
+  h1= title
+    
+  .container
+    
+    h2.bg-info Our Product
+      if !prod
+        h3 No such product
+      else 
+        .card.col-sm-12
+          img.card-img-top.mx-auto(src=prod.image style=" max-width:200px;")
+          .card-body
+            h5.card-title= prod.name
+            h6.card-text
+              | description: #{prod.description}
+              | Price: #{prod.price}
+          p.card-text
+            a.btn.btn-primary.col-12(href='/product/edit/'+ prod._id) Edit
+          p.card-text
+            a.btn.btn-primary.col-12(href='/product/delete/'+ prod._id) Delete
+

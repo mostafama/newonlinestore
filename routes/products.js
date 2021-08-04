@@ -4,7 +4,7 @@ const { Product } = require("../models/product");
 
 /* GET the add form. */
 router.get("/add", function (req, res, next) {
-  res.render("addproduct");
+  res.render("productadd");
 });
 // Process the added product data
 router.post("/add", function (req, res, next) {
@@ -12,8 +12,33 @@ router.post("/add", function (req, res, next) {
   const prod = new Product(data);
   if (prod.image) prod.image = "/images/" + prod.image;
   prod.save(function (err) {
-    if (err) return processErrors(err, "addproduct", req, res);
+    if (err) return processErrors(err, "productadd", req, res);
     res.redirect("/");
+  });
+});
+
+/* GET the Edit form. */
+router.get("/edit/:prodid", function (req, res, next) {
+  const prodid = req.params.prodid;
+  res.render("productadd");
+});
+// Process the edit product data
+router.post("/edit/:prodid", function (req, res, next) {
+  const data = req.body;
+  const prod = new Product(data);
+  if (prod.image) prod.image = "/images/" + prod.image;
+  prod.save(function (err) {
+    if (err) return processErrors(err, "productadd", req, res);
+    res.redirect("/");
+  });
+});
+
+/* GET the details form. */
+router.get("/details/:prodid", function (req, res, next) {
+  const prodid = req.params.prodid;
+  Product.findById(prodid, (err, prod) => {
+    if (err) console.log(err);
+    res.render("productdetails", { prod });
   });
 });
 

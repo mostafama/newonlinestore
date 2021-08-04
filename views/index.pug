@@ -10,9 +10,11 @@ block content
       .row
         each prod in products
           .card.col-lg-3.col-md-4.col-sm-12
-            img.card-img-top(src=prod.image height="200")
+            a(href='/product/details/' + prod._id)
+              img.card-img-top(src=prod.image height="200")
             .card-body
-              h5.card-title= prod.name
+              a(href='/product/details/' + prod._id)
+                h5.card-title= prod.name
               h6.card-text
                 | description: #{prod.description}
                 | Price: #{prod.price}
