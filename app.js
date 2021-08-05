@@ -40,6 +40,23 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
+// -------------------------------------------------------------
+// For Passport.js
+require("./my-passport").init(app);
+// -------------------------------------------------------------
+//  Put the messages in the res.locals
+app.use((req, res, next) => {
+  res.locals.message = req.session.msg; // Read the message from the session variable
+  req.session.msg = null;
+  next();
+});
+// -------------------------------------------------------------
+app.use((req, res, next) => {
+  // The title
+  res.locals.title = "Our Online Store";
+  next();
+});
+// ---------------------------------------------------------
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
 app.use("/product", productsRouter);

@@ -1,0 +1,23 @@
+extends layout
+
+block content
+  h1 User Registration
+  p Welcome to #{title}
+
+  .container
+    form(action='/users/register' method='post')
+      .mb-3
+        label.form-label(for='inputUsername') Username
+        input#inputUsername.form-control(type='text' name='username' value=username
+        aria-describedby='usernameHelp' required minlength=6) 
+        #usernameHelp.form-text Please enter your username.
+        .valid-feedback Username is valid
+        .invalid-feedback Invalid username. Min 6 characters.
+      .mb-3
+        label.form-label(for='exampleInputPassword1') Password
+        input#exampleInputPassword1.form-control(type='password' required name='password'
+        pattern='(?=(.*[0-9]))((?=.*[A-Za-z0-9])(?=.*[A-Z])(?=.*[a-z]))^.{6,}$' )
+        .invalid-feedback Invalid password. Min 6 characters.
+      button.btn.btn-primary(type='submit') Submit
+
+

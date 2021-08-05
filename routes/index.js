@@ -5,6 +5,10 @@ const { Product } = require("../models/product");
 
 /* GET home page. */
 router.get("/", function (req, res, next) {
+  if (req.user)
+    req.user.userDetails.then((details) => {
+      console.log("Index back", details);
+    });
   Product.find({}, (err, products) => {
     res.render("index", { title: "Our Store", products });
   });

@@ -2,6 +2,7 @@ var express = require("express");
 var router = express.Router();
 const { Product } = require("../models/product");
 const { Purchase } = require("../models/purchase");
+const processErrors = require("./processErrors");
 
 /* GET the add form. */
 router.get("/add", function (req, res, next) {
@@ -97,17 +98,5 @@ router.get("/return/:purchaseid", function (req, res, next) {
     res.redirect("/product/purchases"); // Redirect to the purchases page
   });
 });
-
-function processErrors(errs, pageTemplate, req, res, data) {
-  // If there are errors from the Model schema
-  const errorArray = [];
-  const errorKeys = Object.keys(errs.errors);
-  errorKeys.forEach((key) => errorArray.push(errs.errors[key].message));
-  return res.render(pageTemplate, {
-    errors: errorArray,
-    ...req.body,
-    ...data,
-  });
-}
 
 module.exports = router;
