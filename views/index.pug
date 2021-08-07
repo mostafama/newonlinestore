@@ -8,15 +8,16 @@ block content
   .container
     h2.bg-info Our Products
       .row
-        each prod in products
-          .card.col-lg-3.col-md-4.col-sm-12
-            a(href='/product/details/' + prod._id)
-              img.card-img-top(src=prod.image height="200")
-            .card-body
+        if products
+          each prod in products
+            .card.col-lg-3.col-md-4.col-sm-12
               a(href='/product/details/' + prod._id)
-                h5.card-title= prod.name
-              h6.card-text
-                | description: #{prod.description}
-                | Price: #{prod.price}
+                img.card-img-top(src=prod.image height="200")
+              .card-body
+                a(href='/product/details/' + prod._id)
+                  h5.card-title= prod.name
+                h6.card-text
+                  | description: #{prod.description}
+                  | Price: #{prod.price}
       a.btn.btn-primary.col-12(href='/product/add') ADD
 
