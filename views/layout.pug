@@ -15,7 +15,7 @@ html
         a(href='/') Home
       li
         a(href='/product/add') Add
-      if !currentUser
+      if !currentUser        
         li
           a(href='/users/register') Register
         li
@@ -29,7 +29,11 @@ html
               input#inputPassword2.form-control(type='password' placeholder='Password' name='password')
             .col-auto
               button.btn.btn-primary.mb-3(type='submit') Login
-      else
+      else  
+        // if the user is logged in
+        if currentUser.role === 'manager'
+          li 
+            a(href='/data') Performance Data
         h5 
           | Welcome back #{currentUser.username}  
           a(href='/log-out') Logout
