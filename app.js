@@ -15,9 +15,12 @@ app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "pug");
 
 // Mongoose connection
-const MongoURL = "mongodb://localhost:27017/mystore";
+const mURL = "mongodb://localhost:27017/mystore";
 const mongoose = require("mongoose");
-mongoose.connect(MongoURL, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(process.env.MongoURL || mURL, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "DB connection error:"));
 db.once("open", function () {
