@@ -1,0 +1,4 @@
+PORT=8777
+PASSPORT_SECRET="sdmfosjfpiosdhnpjknspjihspd"
+MongoURL="mongodb+srv://mongo_user:ss123@cluster0.tuddo.mongodb.net/books?retryWrites=true&w=majority"
+DATA_URL="https://dataapp1.azurewebsites.net/"
