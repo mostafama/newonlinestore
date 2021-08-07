@@ -10,7 +10,7 @@ router.get("/", function (req, res, next) {
       console.log("Index back", details);
     });
   Product.find({}, (err, products) => {
-    res.render("index", { title: "Our Store", products });
+    res.render("index", { products });
   });
 });
 

@@ -57,7 +57,7 @@ app.use((req, res, next) => {
 // -------------------------------------------------------------
 app.use((req, res, next) => {
   // The title
-  res.locals.title = "Our Online Store";
+  res.locals.title = "New Online Store";
   next();
 });
 // ---------------------------------------------------------
